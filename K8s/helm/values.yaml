@@ -1,7 +1,7 @@
 # Registry and rpository for Docker images
 # Default is docker/robotshop/image:latest
 image:
-  repo: robotshop
+  repo: nuaware
   version: latest
   pullPolicy: IfNotPresent
 
@@ -30,4 +30,5 @@ openshift: false
 
 # Storage class to use with redis statefulset.
 redis:
+  #storageClassName: gp2
   storageClassName: standard
