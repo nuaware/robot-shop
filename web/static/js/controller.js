@@ -20,14 +20,14 @@
         $routeProvider.when('/', {
             templateUrl: 'splash.html',
             controller: 'shopform'
-        }).when('/search/:text', {
-            templateUrl: 'search.html',
-            controller: 'searchform'
         }).when('/product/:sku', {
             templateUrl: 'product.html',
             controller: 'productform'
         }).when('/login', {
             templateUrl: 'login.html',
+            controller: 'loginform'
+        }).when('/signup', {
+            templateUrl: 'sign-up.html',
             controller: 'loginform'
         }).when('/cart', {
             templateUrl: 'cart.html',
@@ -69,14 +69,14 @@
 
         $scope.data.uniqueid = 'foo';
         $scope.data.categories = [];
-        $scope.data.products = {};
+        $scope.data.products = [];
         $scope.data.searchText = '';
         // empty cart
         $scope.data.cart = {
             total: 0
         };
 
-        $scope.getProducts = function(category) {
+        function getProducts(category) {
             if($scope.data.products[category]) {
                 $scope.data.products[category] = null;
             } else {
@@ -84,7 +84,7 @@
                     url: '/api/catalogue/products/' + category,
                     method: 'GET'
                 }).then((res) => {
-                    $scope.data.products[category] = res.data;
+                    $scope.data.products = $scope.data.products.concat(res.data);
                 }).catch((e) => {
                     console.log('ERROR', e);
                 });
@@ -97,7 +97,7 @@
                 $scope.data.searchText = '';
             }
         };
-
+        
         function getCategories() {
             $http({
                 url: '/api/catalogue/categories',
@@ -105,6 +105,9 @@
             }).then((res) => {
                 $scope.data.categories = res.data;
                 console.log('categories loaded');
+                $scope.data.categories.forEach(cat => {
+                    getProducts(cat);
+                })
             }).catch((e) => {
                 console.log('ERROR', e);
             });
@@ -164,29 +167,6 @@
                 $scope.data.cart = currentUser.cart;
             }
         });
-    });
-
-    robotshop.controller('searchform', function($scope, $http, $routeParams) {
-        $scope.data = {};
-        $scope.data.searchResults = [];
-
-        function search(text) {
-            if(text) {
-                $http({
-                    url: '/api/catalogue/search/' + text,
-                    method: 'GET'
-                }).then((res) => {
-                    console.log('search results', res.data);
-                    $scope.data.searchResults = res.data;
-                }).catch((e) => {
-                    console.log('ERROR', e);
-                });
-            }
-        }
-
-        var text = $routeParams.text;
-        console.log('search init with', text);
-        search(text);
     });
 
     robotshop.controller('productform', function($scope, $http, $routeParams, $timeout, currentUser) {

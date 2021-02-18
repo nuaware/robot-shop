@@ -13,13 +13,16 @@
                 <td><input type="text" class="form-gap" placeholder="Name" size="20" ng-model="data.name"/></td>
             </tr>
             <tr>
-                <td><input type="password" placeholder="Password" size="20" ng-model="data.password"/></td>
+                <td><input type="email" class="form-gap" placeholder="Email" size="20" ng-model="data.email"/></td>
             </tr>
             <tr>
-                <td colspan="2" class="centre"><button class="login" ng-click="login();">Login</button></td>
+                <td><input type="password" class="form-gap" placeholder="Password" size="20" ng-model="data.password"/></td>
             </tr>
             <tr>
-                <td colspan="2" class="centre"><a href="signup" class="sign-up">Need Account?</a></td>
+                <td><input type="password" placeholder="Confirm Password" size="20" ng-model="data.password2"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="centre"><button class="login" ng-click="register();">Sign up</button></td>
             </tr>
         </table>
     </div>

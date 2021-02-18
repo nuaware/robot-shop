@@ -1,41 +1,26 @@
 <!-- shopping cart -->
-<div>
-    Shopping cart for {{ data.uniqueid }}
-    <div ng-if="data.cart.total == 0">
-        Your cart is empty, get shopping
+<div class="cart">
+    <div class="centre">
+        <h1>Your Shopping Cart</h1>
+        <img src="/media/shopping_trolley.png" alt="Shopping Trolley"/>
     </div>
-    <div ng-if="data.cart.total != 0">
-        <table>
-            <tr>
-                <th>QTY</th>
-                <th>Name</th>
-                <th>Sub Total</th>
-            </tr>
-            <tr ng-repeat="item in data.cart.items">
-                <td>
-                    <input type="number" size="2" min="0" max="10" ng-model="item.qty" ng-change="change(item.sku, item.qty);"/>
-                </td>
-                <td>{{ item.name }}</td>
-                <td class="currency">&euro;{{ item.subtotal.toFixed(2) }}</td>
-            </tr>
-            <tr>
-                <td colspan="3">&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>Inc Tax</td>
-                <td class="currency">&euro;{{ data.cart.tax.toFixed(2) }}</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>Total</td>
-                <td class="currency">&euro;{{ data.cart.total.toFixed(2) }}</td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <button ng-click="buy();">Checkout</button>
-                </td>
-            </tr>
-        </table>
+    <div class="cart-empty centre" ng-if="data.cart.total == 0">
+        No merchandise in your shopping cart yet
+    </div>
+    <div class="cart-items">
+        <div class="cart-item" ng-repeat="item in data.cart.items">
+            <div class="item-pic">
+                <img src="/images/{{ item.sku }}.jpg"/>
+            </div>
+            <div class="centre">
+                <h3>{{ item.name }}</h3>
+            </div>
+            <div class="unit-price price centre">{{ item.subtotal.toFixed(2) }} &euro;</div>
+            <div class="item-qty centre">{{ item.qty }}</div>
+            <div class="total-price price centre">{{ data.cart.total.toFixed(2) }} &euro;</div>
+            <a href="#" class="centre">
+                <img src="/media/cart_remove.png"/>
+            </a>
+        </div>
     </div>
 </div>
