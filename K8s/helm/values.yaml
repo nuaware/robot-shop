@@ -3,7 +3,7 @@
 image:
   repo: nuaware
   version: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 # Alternative payment gateway URL
 # Default is https://www.paypal.com
