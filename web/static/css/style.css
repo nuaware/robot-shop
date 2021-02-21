@@ -43,14 +43,17 @@ a {
 
 button,
 a.add-cart,
-a.show-item {
+a.show-item,
+a.cont {
     background: linear-gradient(90deg, #5CBB5F 0%, #1C8D9A 100%);
     border: 0;
     color: white;
     cursor: pointer;
 }
 
-button.login {
+button.login,
+button.confirm-shipping,
+a.cont {
     border-radius: 42px;
     font-family: "Lato", sans-serif;
     font-size: 0.9375em;
@@ -149,7 +152,9 @@ table.credentials {
 }
 
 table.credentials .logo {
-    margin-bottom: 26px;
+    height: 68px;
+    width: auto;
+    margin-bottom: 36px;
 }
 
 table.credentials input {
@@ -191,7 +196,9 @@ table.credentials input.form-gap {
     column-gap: 45px;
 }
 
-.cart > div:first-child {
+.cart > div:first-child,
+.shipping > div:first-child,
+.payment > div:first-child {
     margin-bottom: 32px;
 }
 
@@ -398,22 +405,10 @@ table.credentials input.form-gap {
 }
 
 /* payment */
-a.cont:visited {
-    color: cyan;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-a.cont:link {
-    color: cyan;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-a.cont:hover {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+a.cont {
+    display: block;
+    line-height: 42px;
+    text-align: center;
 }
 
 .circle-icon {

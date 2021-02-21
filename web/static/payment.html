@@ -8,8 +8,11 @@
     </div>
 </div>
 
-<div>
-    <h3>Review your order</h3>
+<div class="payment">
+    <div class="centre">
+        <h1>Review Your Order</h1>
+        <img src="/media/green_cart.svg" alt="Shopping Trolley"/>
+    </div>
     <div ng-if="data.cart.total != 0">
         <table>
             <tr>
@@ -37,7 +40,7 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <button ng-disabled="data.buttonDisabled" onclick="$('#payment-message').toggleClass('open'); return false;" ng-click="pay();">Pay Now</button>
+                    <button class="confirm-shipping" ng-disabled="data.buttonDisabled" onclick="$('#payment-message').toggleClass('open'); return false;" ng-click="pay();">Pay Now</button>
                 </td>
             </tr>
         </table>
