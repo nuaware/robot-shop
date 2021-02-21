@@ -1,4 +1,13 @@
 <!-- payment template -->
+<div class="light-modal" id="payment-message" role="dialog" aria-labelledby="light-modal-label" aria-hidden="false">
+    <div class="light-modal-content animated rotateIn">
+        <div class="light-modal-body">
+            <a href="#" class="light-modal-close-icon" onclick="$('#payment-message').toggleClass('open'); return false;" aria-label="close">&times;</a>
+            {{ data.message }}
+        </div>
+    </div>
+</div>
+
 <div>
     <h3>Review your order</h3>
     <div ng-if="data.cart.total != 0">
@@ -28,13 +37,10 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <button ng-disabled="data.buttonDisabled" ng-click="pay();">Pay Now</button>
+                    <button ng-disabled="data.buttonDisabled" onclick="$('#payment-message').toggleClass('open'); return false;" ng-click="pay();">Pay Now</button>
                 </td>
             </tr>
         </table>
-    </div>
-    <div class="message">
-        {{ data.message }}
     </div>
     <div ng-if="data.cont">
         Thank you for your order

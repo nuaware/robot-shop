@@ -4,23 +4,43 @@
         <h1>Your Shopping Cart</h1>
         <img src="/media/shopping_trolley.png" alt="Shopping Trolley"/>
     </div>
-    <div class="cart-empty centre" ng-if="data.cart.total == 0">
-        No merchandise in your shopping cart yet
-    </div>
-    <div class="cart-items">
-        <div class="cart-item" ng-repeat="item in data.cart.items">
-            <div class="item-pic">
-                <img src="/images/{{ item.sku }}.jpg"/>
+    <div class="cart-wrapper">
+        <div class="cart-empty centre" ng-if="data.cart.total == 0">
+            No merchandise in your shopping cart yet
+        </div>
+        <div class="cart-items" ng-if="data.cart.total != 0">
+            <div class="cart-item" ng-repeat="item in data.cart.items">
+                <div class="productimage">
+                    <img src="/images/{{ item.sku }}.jpg"/>
+                </div>
+                <div class="centre">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+                <div class="unit-price price centre">{{ item.price.toFixed(2) }} &euro;</div>
+                <div class="item-qty centre">{{ item.qty }}</div>
+                <div class="total-price price centre">{{ item.subtotal.toFixed(2) }} &euro;</div>
+                <a href="#" class="centre">
+                    <img src="/media/cart_remove.png"/>
+                </a>
             </div>
-            <div class="centre">
-                <h3>{{ item.name }}</h3>
-            </div>
-            <div class="unit-price price centre">{{ item.subtotal.toFixed(2) }} &euro;</div>
-            <div class="item-qty centre">{{ item.qty }}</div>
-            <div class="total-price price centre">{{ data.cart.total.toFixed(2) }} &euro;</div>
-            <a href="#" class="centre">
-                <img src="/media/cart_remove.png"/>
-            </a>
+        </div>
+        <div class="cart-summary">
+            <h2>Your Order</h2>
+            <table>
+                <tr>
+                    <td>SUBTOTAL</td>
+                    <td><h3>{{ data.cart.total.toFixed(2) }} &euro;</h3></td>
+                </tr>
+                <tr>
+                    <td>SHIPPING</td>
+                    <td><h3>Free</h3></td>
+                </tr>
+                <tr>
+                    <td>TOTAL</td>
+                    <td><button class="cart-payment" ng-click="buy();" ng-disabled="data.cart.total == 0">{{ data.cart.total.toFixed(2) }} &euro;</button></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

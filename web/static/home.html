@@ -1,7 +1,7 @@
 <!-- product list -->
 <div class="products">
     <div class="product" ng-repeat="product in data.products">
-        <div class="item-pic centre centre-y">
+        <div class="productimage centre centre-y">
             <img src="/images/{{ product.sku }}.jpg"/>
         </div>
         <div>
@@ -10,10 +10,7 @@
         </div>
         <div>
             <div class="unit-price price">{{ product.price.toFixed(2) }} &euro;</div>
-            <span ng-if="product.instock == 0">
-                Out of stock
-            </span>
-            <button class="add-cart" ng-if="product.instock != 0" ng-click="addToCart();">Buy now</button>
+            <a class="show-item centre" href="product/{{ product.sku }}">Show item</a>
         </div>
     </div>
 </div>

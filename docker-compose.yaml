@@ -143,6 +143,8 @@ services:
     build:
       context: web
     image: ${REPO}/rs-web:${TAG}
+    volumes:
+      - "./web/static:/usr/share/nginx/html:rw"
     depends_on:
       - catalogue
       - user

@@ -18,7 +18,7 @@
 
     robotshop.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
         $routeProvider.when('/', {
-            templateUrl: 'splash.html',
+            templateUrl: 'home.html',
             controller: 'shopform'
         }).when('/product/:sku', {
             templateUrl: 'product.html',
@@ -169,7 +169,7 @@
         });
     });
 
-    robotshop.controller('productform', function($scope, $http, $routeParams, $timeout, currentUser) {
+    robotshop.controller('productform', function($scope, $http, $routeParams, currentUser) {
         $scope.data = {};
         $scope.data.message = ' ';
         $scope.data.product = {};
@@ -187,11 +187,9 @@
                 console.log('cart', res.data);
                 currentUser.cart = res.data;
                 $scope.data.message = 'Added to cart';
-                $timeout(clearMessage, 3000);
             }).catch((e) => {
                 console.log('ERROR', e);
                 $scope.data.message = 'ERROR ' + e;
-                $timeout(clearMessage, 3000);
             });
         };
 
@@ -203,7 +201,6 @@
                 method: 'PUT'
             }).then((res) => {
                 $scope.data.message = 'Thank you for your feedback';
-                $timeout(clearMessage, 3000);
                 loadRating($scope.data.product.sku);
             }).catch((e) => {
                 console.log('ERROR', e);
@@ -241,11 +238,6 @@
             });
         }
 
-        function clearMessage() {
-            console.log('clear message');
-            $scope.data.message = ' ';
-        }
-        
         loadProduct($routeParams.sku);
         loadRating($routeParams.sku);
     });
@@ -440,7 +432,7 @@
         console.log('paymentform init');
     });
 
-    robotshop.controller('loginform', function($scope, $http, currentUser) {
+    robotshop.controller('loginform', function($scope, $http, $timeout, $location, currentUser) {
         $scope.data = {};
         $scope.data.name = '';
         $scope.data.email = '';
@@ -465,6 +457,8 @@
                 $scope.data.password = $scope.data.password2 = '';
                 currentUser.user = $scope.data.user;
                 currentUser.uniqueid = $scope.data.user.name;
+                $scope.data.message = 'You are logged in!';
+                $timeout(clearMessage, 2000);
                 // login OK move cart across
                 $http({
                     url: '/api/cart/rename/' + oldId + '/' + $scope.data.user.name,
@@ -513,12 +507,20 @@
                 $scope.data.password = $scope.data.password2 = '';
                 currentUser.user = $scope.data.user;
                 currentUser.uniqueid = $scope.data.user.name;
+                $scope.data.message = 'You are signed up!';
+                $timeout(clearMessage, 2000);
             }).catch((e) => {
                 console.log('ERROR', e);
                 $scope.data.message = 'ERROR ' + e.data;
                 $scope.data.password = $scope.data.password2 = '';
             });
         };
+
+        function clearMessage() {
+            console.log('clear message');
+            $scope.data.message = ' ';
+            $location.url('/');
+        }
 
         function loadHistory(id) {
             $http({
