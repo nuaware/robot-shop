@@ -20,7 +20,7 @@
                 <div class="unit-price price centre">{{ item.price.toFixed(2) }} &euro;</div>
                 <div class="item-qty centre">{{ item.qty }}</div>
                 <div class="total-price price centre">{{ item.subtotal.toFixed(2) }} &euro;</div>
-                <a href="#" class="centre">
+                <a href="#" class="centre" ng-click="change(item.sku, 0);">
                     <img src="/media/cart_remove.png"/>
                 </a>
             </div>

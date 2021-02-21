@@ -52,7 +52,8 @@ a.show-item {
 
 button.login {
     border-radius: 42px;
-    font-size: 1.375em;
+    font-family: "Lato", sans-serif;
+    font-size: 0.9375em;
     font-weight: 400;
     height: 42px;
     width: 157px;
@@ -359,6 +360,7 @@ table.credentials input.form-gap {
 .product-details .product > div:last-child > div:last-child {
     display: grid;
     grid-template-columns: repeat(3, 33.3%);
+    margin-top: 22px;
 }
 
 .product-details .product h3 {
