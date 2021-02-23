@@ -13,8 +13,6 @@ db.products.insertMany([
     {sku: 'NGX-1', name: 'NGINX T-Shirt', description: 'en-jin-eks.', price: 15, instock: 6, categories: ['Swag']},
     {sku: 'EXN-1', name: 'EXN Calendar', description: 'Exclusive Networks 2021 Calendar.', price: 5, instock: 10, categories: ['Swag']},
     {sku: 'GIT-1', name: 'Octocat', description: 'The official Github mascotte.', price: 15, instock: 12, categories: ['Swag']},
-
-
     {sku: 'PSC-1', name: 'Prisma Cloud T-Shirt', description: 'Feeling secure yet?', price: 15, instock: 5, categories: ['Swag']}
 ]);
 
