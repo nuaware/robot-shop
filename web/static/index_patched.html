@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--# include file="eum.html" -->
+    <title>Nuaware Merchandise Demo Shop</title>
+    <link rel="shortcut icon" type="image/png" href="/media/instana_icon_square.png"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Raleway:wght@700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        @import url("/css/style.css");
+        @import url("/css/light-modal.css");
+        @import url("/css/auto-complete.css");
+    </style>
+    <meta http-equiv="Cache-Control" content="no-Cache">
+    <meta http-equiv="Pragma" content="no-cache">
+</head>
+
+<body ng-app="robotshop">
+   <div style="position: absolute; z-index: 1000; left: 50%; top: 50%; transform: translate(-50%,-50%); width:##px ; height:##px;">
+                      <img src="/media/patch.png" style="display: block;" />
+   </div>
+    <div ng-controller="shopform">
+        <header>
+            <a href="/" class="logo centre-y">
+                <img src="/media/Logo.png" alt="nuaware merchandise shop"/>
+            </a>
+            <nav class="centre-y">
+                <a href="login" ng-if="data.user.name === undefined">
+                    Log in / Sign up
+                </a>
+                <a href="cart">
+                    <img src="/media/white_cart.svg" height="32px" width="auto" alt="shop cart"/>
+                </a>
+            </nav>
+        </header>
+        <main>
+            <!-- main display area -->
+            <div ng-view></div>
+        </main>
+        <div class="circle-icon"><img src="/media/group_2.png"/></div>
+    </div>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular-route.js"></script>
+<script src="/js/auto-complete.js"></script>
+<script src="/js/controller.js"></script>
+<script type="text/javascript">
+    angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+</script>
+
+</body>
+</html>
