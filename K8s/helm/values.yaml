@@ -30,5 +30,5 @@ openshift: false
 
 # Storage class to use with redis statefulset.
 redis:
-  storageClassName: gp2
-  #storageClassName: standard
+  #storageClassName: gp2
+  storageClassName: standard
